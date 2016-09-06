@@ -1,0 +1,14 @@
+<div id="divCustomerImage" class="wrapper-sm wrapper-profile-image m-t-sm center-block b-a bg-white">
+    <div class="bg-light pos-rlt profile-image">
+        <!--suppress HtmlUnknownTarget -->
+        <img src="assets/images/no-avatar.png" ng-src="{{customer.imagePath}}" class="img-responsive"/>
+
+        <div class="pos-abt wrapper-change-image" uploadimageprofile>
+            <i class="fa fa-camera v-middle"></i>
+
+            <span class="change-image-text v-middle">Change profile picture</span>
+        </div>
+
+        <input id="inputUploadImageProfile" type="file" accept="image/jpeg, image/png" onchange="angular.element(this).scope().handleImageCustomerFileSelect(event)"/>
+    </div>
+</div>

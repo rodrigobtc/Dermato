@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h3 class="modal-title">Crop Photo</h3>
+</div>
+
+<div class="modal-body">
+    <div class="hbox hbox-auto-xs" ng-hide="false">
+        <div class="col col-crop-img">
+            <h4>Image</h4>
+            <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs">
+                <div class="bg-light wrapper-crop-img">
+                    <img-crop image="myImage" result-image="myCroppedImage" result-image-size="280" area-type="{{cropType}}"></img-crop>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>Preview</h4>
+            <div class="inline bg-white wrapper-sm b-a wrapper-preview-img">
+                <div class="bg-light">
+                    <img src="" ng-src="{{myCroppedImage}}" class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress bg-light dker" ng-show="false">
+        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': percentage + '%' }"></div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="cancel()" ng-disabled="promise.$$state.status === 0">Cancel</button>
+
+    <button class="btn btn-primary" ng-click="saveCroppedImage()" ng-disabled="promise.$$state.status === 0">
+        <span ng-show="promise.$$state.status === 0">
+            <i class="fa fa-spinner fa-spin"></i>
+            Updating
+        </span>
+
+        <span ng-show="promise.$$state.status !== 0">Crop and Save</span>
+    </button>
+</div>
