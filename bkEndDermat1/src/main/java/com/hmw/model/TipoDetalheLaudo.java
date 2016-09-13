@@ -22,6 +22,16 @@ public class TipoDetalheLaudo {
 	
 	@Column(columnDefinition=" varchar(25)")
 	private String descricao;
+	
+	private Integer ordem;
+
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
 
 	public String getTipo() {
 		return tipo;

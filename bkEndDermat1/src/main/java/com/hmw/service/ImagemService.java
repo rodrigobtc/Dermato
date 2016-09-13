@@ -1,17 +1,13 @@
 package com.hmw.service;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hmw.dao.ExamesDAO;
-import com.hmw.dao.impl.ExamesDAOImpl;
 import com.hmw.model.Imagem;
 import com.hmw.repository.ImagemRepository;
-import com.hmw.vo.ExameVO;
-import com.hmw.vo.ImagemVO;
 
 @Service
 public class ImagemService {
