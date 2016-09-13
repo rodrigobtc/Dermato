@@ -3,6 +3,7 @@ package com.hmw.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -52,7 +53,15 @@ public class Laudo {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
 	private List<DetalheLaudo> compatibilidadeLesao;
 	
+	@Column(columnDefinition = " text")
 	private String descricaoEstudo;
+
+	
+	@Column(columnDefinition = " text")
+	private String outrasInformacoes;
+	
+	@Column(columnDefinition = " text")
+	private String conclusao;
 	
 	private Integer tamanho;
 	
@@ -152,7 +161,4 @@ public class Laudo {
 		this.conclusao = conclusao;
 	}
 
-	private String outrasInformacoes;
-	
-	private String conclusao;
 }

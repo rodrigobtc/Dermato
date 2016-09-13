@@ -1,5 +1,6 @@
 package com.hmw.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,11 @@ public class TipoDetalheLaudo {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tipodetalhelaudo_id_seq")
 	private Integer id;
 	
+	@Column(columnDefinition=" varchar(1)")
 	private String tipo;
+	
+	@Column(columnDefinition=" varchar(25)")
+	private String descricao;
 
 	public String getTipo() {
 		return tipo;
@@ -25,8 +30,6 @@ public class TipoDetalheLaudo {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
-	private String descricao;
 
 	public Integer getId() {
 		return id;

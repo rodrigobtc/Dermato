@@ -2,6 +2,7 @@ package com.hmw.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class DetalheImagem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "detalheimagem_id_seq")
 	private long id;
 	@JsonBackReference
+	@Column(columnDefinition=" varchar(100)")
 	private String descricao;
+	@Column(columnDefinition=" varchar(100)")
 	private String mensagem;
 	public long getId() {
 		return id;

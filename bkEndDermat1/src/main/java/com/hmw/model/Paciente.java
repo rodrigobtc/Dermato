@@ -32,15 +32,8 @@ public class Paciente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente_id_seq")
 	@Column(name = "id")
 	private Integer id;
+
 	private String cpf;
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente", cascade = CascadeType.ALL)
 	private List<Exame> exames = new ArrayList<>();
@@ -50,6 +43,7 @@ public class Paciente implements Serializable {
 
 	private Date nascimento;
 
+	@Column(columnDefinition = " varchar(40) not null")
 	private String nome;
 
 	public List<Exame> getExames() {
@@ -91,4 +85,13 @@ public class Paciente implements Serializable {
 	public void setProntuario(List<Prontuario> prontuario) {
 		this.prontuario = prontuario;
 	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 }

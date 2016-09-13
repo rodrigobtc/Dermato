@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -18,7 +19,10 @@ public class DetalheLaudo {
 	@SequenceGenerator(name = "detalhelaudo_id_seq", sequenceName = "detalhelaudo_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "detalhelaudo_id_seq")
 	private Integer id;
+	
+	@JoinColumn(columnDefinition=" varchar(20)")
 	private String nome;
+	
 	@JsonBackReference
 	@ManyToOne
 	private Laudo laudo;

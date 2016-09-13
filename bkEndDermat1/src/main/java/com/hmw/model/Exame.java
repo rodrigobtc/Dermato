@@ -27,26 +27,38 @@ public class Exame implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String descricao;
 	@Id
 	@SequenceGenerator(name = "exame_id_seq", sequenceName = "exame_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "exame_id_seq")
 	@Column(name = "id")
 	private Integer id;
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "exame", cascade = CascadeType.ALL)
-	private List<Imagem> imagens;
-	@ManyToOne
-	@JsonBackReference
-	private Usuario laudador;
-	@ManyToOne
-	@JsonBackReference
-	private Paciente paciente;
+	
+	@Column(columnDefinition=" varchar(100)")
+	private String descricao;
+	
+	@Column(columnDefinition=" varchar(100)")
+	private String indicacao;
 
 	@ManyToOne
 	@JsonBackReference
+	private Usuario laudador;
+	
+	@ManyToOne
+	@JsonBackReference
 	private Usuario requisitante;
-	private String indicacao;
+	
+	@ManyToOne
+	@JsonBackReference
+	private Paciente paciente;
+	
+	@JsonProperty
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "exame", cascade = CascadeType.ALL)
+	private List<Imagem> imagens;
+	
+	@JsonProperty
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "exame", cascade = CascadeType.ALL)
+	private List<Laudo> laudos;
+
 
 	public String getDescricao() {
 		return descricao;
