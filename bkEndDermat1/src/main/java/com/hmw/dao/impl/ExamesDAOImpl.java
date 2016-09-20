@@ -37,7 +37,7 @@ public class ExamesDAOImpl implements ExamesDAO {
 	}
 
 	@Override
-	public ExameVO getExame(Integer id, Boolean carregaImagens) {
+	public ExameVO getExame(Integer id, Boolean carregaImagens) throws Exception {
 		List<Object[]> results = this.em.createNativeQuery(SQLExames.getExame(id, carregaImagens)).getResultList();
 		ExameVO retorno = new ExameVO();
 		retorno.setImagens(new ArrayList<>());
@@ -51,9 +51,13 @@ public class ExamesDAOImpl implements ExamesDAO {
 			retorno.setDescricao((String) record[3]);
 			retorno.setIndicacao((String) record[4]);
 			retorno.setCpf((String) record[8]);
-			imagemVO.setDescricao((String) record[5]);
-			imagemVO.setMensagem((String) record[6]);
-			imagemVO.setImgId(new Long(record[7].toString()));
+			try {
+				imagemVO.setDescricao((String) record[5]);
+				imagemVO.setMensagem((String) record[6]);
+				imagemVO.setImgId(new Long(record[7].toString()));
+			} catch (Exception e1) {
+				throw new Exception("Ocorreu um erro ao carregar dados de imagens. Provavelmente não há tipos de imagens cadastradas.");
+			}
 			imagemVO.setExame((Integer) record[2]);
 			try {
 				imagemVO.setImg((byte[]) record[9]);

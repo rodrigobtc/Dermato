@@ -40,7 +40,7 @@ public class ExameService {
 		return exameRepository.exists(id);
 	}
 	
-	public ExameVO localizar(Integer id, Boolean carregaImagens) {
+	public ExameVO localizar(Integer id, Boolean carregaImagens) throws Exception {
 		
 		return exameDao.getExame(id, carregaImagens);
 	}

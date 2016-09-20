@@ -1,12 +1,12 @@
 package com.hmw.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -19,29 +19,11 @@ public class DetalheLaudo {
 	@SequenceGenerator(name = "detalhelaudo_id_seq", sequenceName = "detalhelaudo_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "detalhelaudo_id_seq")
 	private Integer id;
-	
-	@JoinColumn(columnDefinition=" varchar(20)")
 	private String nome;
-	
 	@JsonBackReference
-	@ManyToOne
-	private Laudo laudo;
+	@OneToMany(mappedBy="detalhelaudo")
+	private List<LaudoDetalheLaudo> laudo;
 	
-	@OneToOne
-	private TipoDetalheLaudo tipoDetalheLaudo;
-
-	public Laudo getLaudo() {
-		return laudo;
-	}
-	public void setLaudo(Laudo laudo) {
-		this.laudo = laudo;
-	}
-	public TipoDetalheLaudo getTipoDetalheLaudo() {
-		return tipoDetalheLaudo;
-	}
-	public void setTipoDetalheLaudo(TipoDetalheLaudo tipoDetalheLaudo) {
-		this.tipoDetalheLaudo = tipoDetalheLaudo;
-	}
 	public Integer getId() {
 		return id;
 	}
@@ -53,6 +35,12 @@ public class DetalheLaudo {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public List<LaudoDetalheLaudo> getLaudo() {
+		return laudo;
+	}
+	public void setLaudo(List<LaudoDetalheLaudo> laudo) {
+		this.laudo = laudo;
 	}
 
 }

@@ -2,10 +2,8 @@ package com.hmw.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
@@ -29,29 +26,8 @@ public class Laudo {
 	@ManyToOne
 	private Exame exame;
 
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> lesaoElementar;
-	
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> lesaoSecundaria;
-	
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> coloracao;
-	
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> morfologia;
-	
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> distribuicao;
-	
-	@JsonProperty
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "laudo", cascade = CascadeType.ALL)
-	private List<DetalheLaudo> compatibilidadeLesao;
+	@OneToMany(mappedBy="laudo")
+	private List<LaudoDetalheLaudo> detalhelaudo;
 	
 	@Column(columnDefinition = " text")
 	private String descricaoEstudo;
@@ -79,54 +55,6 @@ public class Laudo {
 
 	public void setExame(Exame exame) {
 		this.exame = exame;
-	}
-
-	public List<DetalheLaudo> getLesaoElementar() {
-		return lesaoElementar;
-	}
-
-	public void setLesaoElementar(List<DetalheLaudo> lesaoElementar) {
-		this.lesaoElementar = lesaoElementar;
-	}
-
-	public List<DetalheLaudo> getLesaoSecundaria() {
-		return lesaoSecundaria;
-	}
-
-	public void setLesaoSecundaria(List<DetalheLaudo> lesaoSecundaria) {
-		this.lesaoSecundaria = lesaoSecundaria;
-	}
-
-	public List<DetalheLaudo> getColoracao() {
-		return coloracao;
-	}
-
-	public void setColoracao(List<DetalheLaudo> coloracao) {
-		this.coloracao = coloracao;
-	}
-
-	public List<DetalheLaudo> getMorfologia() {
-		return morfologia;
-	}
-
-	public void setMorfologia(List<DetalheLaudo> morfologia) {
-		this.morfologia = morfologia;
-	}
-
-	public List<DetalheLaudo> getDistribuicao() {
-		return distribuicao;
-	}
-
-	public void setDistribuicao(List<DetalheLaudo> distribuicao) {
-		this.distribuicao = distribuicao;
-	}
-
-	public List<DetalheLaudo> getCompatibilidadeLesao() {
-		return compatibilidadeLesao;
-	}
-
-	public void setCompatibilidadeLesao(List<DetalheLaudo> compatibilidadeLesao) {
-		this.compatibilidadeLesao = compatibilidadeLesao;
 	}
 
 	public String getDescricaoEstudo() {
@@ -159,6 +87,14 @@ public class Laudo {
 
 	public void setConclusao(String conclusao) {
 		this.conclusao = conclusao;
+	}
+
+	public List<LaudoDetalheLaudo> getDetalhelaudo() {
+		return detalhelaudo;
+	}
+
+	public void setDetalhelaudo(List<LaudoDetalheLaudo> detalhelaudo) {
+		this.detalhelaudo = detalhelaudo;
 	}
 
 }

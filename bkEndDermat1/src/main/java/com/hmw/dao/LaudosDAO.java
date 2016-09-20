@@ -2,8 +2,9 @@ package com.hmw.dao;
 
 import java.util.List;
 
-import com.hmw.model.TipoDetalheLaudo;
+import com.hmw.vo.LaudoVO;
 
 public interface LaudosDAO {
-	public List<TipoDetalheLaudo> getTipoDetalheLaudo(String tipo);
+
+	List<LaudoVO> getLaudo(Integer exameId, Integer laudoId);
 }
